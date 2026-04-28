@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="pynarae" translate="label" sortOrder="900">
+            <label>Pynarae</label>
+        </tab>
+        <section id="pynarae_tiktokfeed" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>TikTok Feed</label>
+            <tab>pynarae</tab>
+            <resource>Pynarae_TiktokFeed::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Feed Generation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="source_dir" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Source XML Directory under pub/media</label>
+                    <comment>Example: run_as_root/feed</comment>
+                    <validate>required-entry validate-no-html-tags</validate>
+                </field>
+                <field id="source_pattern" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Source XML Filename Pattern</label>
+                    <comment>Example: *en_us*.xml. The newest matching file is used.</comment>
+                    <validate>required-entry validate-no-html-tags</validate>
+                </field>
+                <field id="output_dir" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Output Directory under pub/media</label>
+                    <comment>Example: feed</comment>
+                    <validate>required-entry validate-no-html-tags</validate>
+                </field>
+                <field id="output_filename" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Output CSV Filename</label>
+                    <comment>Example: tiktok_feed.csv</comment>
+                    <validate>required-entry validate-no-html-tags</validate>
+                </field>
+                <field id="base_media_url" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Base Media URL</label>
+                    <comment>Leave empty to use Magento Store Base Media URL. Use this only when CDN/custom media domain is required.</comment>
+                    <validate>validate-url</validate>
+                </field>
+            </group>
+            <group id="product" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Mapping</label>
+                <field id="default_brand" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Brand</label>
+                    <comment>Used when the source feed and product attribute do not contain a brand.</comment>
+                    <validate>required-entry validate-no-html-tags</validate>
+                </field>
+                <field id="brand_attribute" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Brand Attribute Code</label>
+                    <comment>Default: brand</comment>
+                    <validate>validate-code validate-no-html-tags</validate>
+                </field>
+                <field id="default_google_product_category" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Google Product Category</label>
+                    <comment>Used when the source feed has no google_product_category.</comment>
+                    <validate>required-entry validate-no-html-tags</validate>
+                </field>
+                <field id="max_additional_images" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Maximum Additional Images</label>
+                    <comment>Allowed range: 0-10.</comment>
+                    <validate>validate-number validate-digits-range digits-range-0-10</validate>
+                </field>
+                <field id="normalize_admin_links" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Remove /admin/ from Product Links</label>
+                    <comment>Recommended: Yes. Prevents admin URLs from leaking into feeds.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
