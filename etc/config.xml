@@ -5,6 +5,7 @@
         <pynarae_tiktokfeed>
             <general>
                 <enabled>1</enabled>
+                <cron_schedule>0 */2 * * *</cron_schedule>
                 <source_dir>run_as_root/feed</source_dir>
                 <source_pattern>*en_us*.xml</source_pattern>
                 <output_dir>feed</output_dir>
