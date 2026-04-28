@@ -15,6 +15,11 @@
                     <label>Enable Feed Generation</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
+                <field id="cron_schedule" translate="label comment" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cron Schedule</label>
+                    <comment>Default: 0 */2 * * * means every 2 hours.</comment>
+                    <validate>required-entry validate-no-html-tags</validate>
+                </field>
                 <field id="source_dir" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Source XML Directory under pub/media</label>
                     <comment>Example: run_as_root/feed</comment>
