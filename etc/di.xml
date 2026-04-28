@@ -6,24 +6,24 @@
     <type name="Magento\Framework\Console\CommandListInterface">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="silkrodr:tiktokfeed:generate" xsi:type="object">
-                    Silkrodr\TiktokFeed\Console\Command\GenerateTikTokFeed
+                <item name="pynarae:tiktokfeed:generate" xsi:type="object">
+                    Pynarae\TiktokFeed\Console\Command\GenerateTikTokFeed
                 </item>
             </argument>
         </arguments>
     </type>
 
     <!-- Console Command 注入 Service -->
-    <type name="Silkrodr\TiktokFeed\Console\Command\GenerateTikTokFeed">
+    <type name="Pynarae\TiktokFeed\Console\Command\GenerateTikTokFeed">
         <arguments>
-            <argument name="feedService" xsi:type="object">Silkrodr\TiktokFeed\Service\GenerateFeedService</argument>
+            <argument name="feedService" xsi:type="object">Pynarae\TiktokFeed\Service\GenerateFeedService</argument>
         </arguments>
     </type>
 
     <!-- Cron Callback 注入 Service -->
-    <type name="Silkrodr\TiktokFeed\Cron\GenerateTikTokFeed">
+    <type name="Pynarae\TiktokFeed\Cron\GenerateTikTokFeed">
         <arguments>
-            <argument name="feedService" xsi:type="object">Silkrodr\TiktokFeed\Service\GenerateFeedService</argument>
+            <argument name="feedService" xsi:type="object">Pynarae\TiktokFeed\Service\GenerateFeedService</argument>
         </arguments>
     </type>
 </config>

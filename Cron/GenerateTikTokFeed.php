@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Silkrodr\TiktokFeed\Cron;
+namespace Pynarae\TiktokFeed\Cron;
 
-use Silkrodr\TiktokFeed\Service\GenerateFeedService;
+use Pynarae\TiktokFeed\Service\GenerateFeedService;
 use Psr\Log\LoggerInterface;
 
 class GenerateTikTokFeed
