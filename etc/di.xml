@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- 注册 Console Command -->
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="silkrodr:tiktokfeed:generate" xsi:type="object">
+                    Silkrodr\TiktokFeed\Console\Command\GenerateTikTokFeed
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Console Command 注入 Service -->
+    <type name="Silkrodr\TiktokFeed\Console\Command\GenerateTikTokFeed">
+        <arguments>
+            <argument name="feedService" xsi:type="object">Silkrodr\TiktokFeed\Service\GenerateFeedService</argument>
+        </arguments>
+    </type>
+
+    <!-- Cron Callback 注入 Service -->
+    <type name="Silkrodr\TiktokFeed\Cron\GenerateTikTokFeed">
+        <arguments>
+            <argument name="feedService" xsi:type="object">Silkrodr\TiktokFeed\Service\GenerateFeedService</argument>
+        </arguments>
+    </type>
+</config>
