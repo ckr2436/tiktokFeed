@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Pynarae_TiktokFeed::generate"
+             title="TikTok Feed"
+             module="Pynarae_TiktokFeed"
+             sortOrder="90"
+             parent="Magento_Backend::marketing"
+             action="pynarae_tiktokfeed/feed/generate"
+             resource="Pynarae_TiktokFeed::generate"/>
+    </menu>
+</config>
