@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <pynarae_tiktokfeed>
+            <general>
+                <enabled>1</enabled>
+                <source_dir>run_as_root/feed</source_dir>
+                <source_pattern>*en_us*.xml</source_pattern>
+                <output_dir>feed</output_dir>
+                <output_filename>tiktok_feed.csv</output_filename>
+                <base_media_url></base_media_url>
+            </general>
+            <product>
+                <default_brand>MYUPONA</default_brand>
+                <brand_attribute>brand</brand_attribute>
+                <default_google_product_category>Health &amp; Beauty</default_google_product_category>
+                <max_additional_images>5</max_additional_images>
+                <normalize_admin_links>1</normalize_admin_links>
+            </product>
+        </pynarae_tiktokfeed>
+    </default>
+</config>
