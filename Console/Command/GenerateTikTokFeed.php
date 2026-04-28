@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Silkrodr\TiktokFeed\Console\Command;
+namespace Pynarae\TiktokFeed\Console\Command;
 
-use Silkrodr\TiktokFeed\Service\GenerateFeedService;
+use Pynarae\TiktokFeed\Service\GenerateFeedService;
 use Magento\Framework\Console\Cli;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -22,7 +22,7 @@ class GenerateTikTokFeed extends Command
 
     protected function configure(): void
     {
-        $this->setName('silkrodr:tiktokfeed:generate')
+        $this->setName('pynarae:tiktokfeed:generate')
              ->setDescription('生成 TikTok 产品 Feed CSV');
     }
 

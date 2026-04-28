@@ -1,6 +1,6 @@
 <?php
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'Silkrodr_TiktokFeed',
+    'Pynarae_TiktokFeed',
     __DIR__
 );

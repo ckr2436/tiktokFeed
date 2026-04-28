@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Silkrodr\TiktokFeed\Service;
+namespace Pynarae\TiktokFeed\Service;
 
 use Magento\Catalog\Model\ProductRepository;
 use Magento\Framework\App\Filesystem\DirectoryList;
