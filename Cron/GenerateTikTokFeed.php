@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace Pynarae\TiktokFeed\Cron;
 
+use Psr\Log\LoggerInterface;
 use Pynarae\TiktokFeed\Helper\Config;
 use Pynarae\TiktokFeed\Service\GenerateFeedService;
-use Psr\Log\LoggerInterface;
 
 class GenerateTikTokFeed
 {
@@ -30,14 +30,14 @@ class GenerateTikTokFeed
             return;
         }
 
-        $this->logger->info('TikTokFeed cron started.');
+        $this->logger->info('TikTokFeed cron started. Source: Magento catalog products.');
 
         try {
             $result = $this->feedService->execute();
             $this->logger->info(sprintf(
-                'TikTokFeed cron completed. Processed %d products. Source: %s. Destination: %s.',
+                'TikTokFeed cron completed. Processed %d products. Skipped %d products. Destination: %s.',
                 $result['processed'],
-                $result['source_file'],
+                $result['skipped'],
                 $result['destination_file']
             ));
         } catch (\Throwable $exception) {
