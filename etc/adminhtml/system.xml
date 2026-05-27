@@ -15,32 +15,22 @@
                     <label>Enable Feed Generation</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="cron_schedule" translate="label comment" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="cron_schedule" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Cron Schedule</label>
                     <comment>Default: 0 */2 * * * means every 2 hours.</comment>
                     <validate>required-entry validate-no-html-tags</validate>
                 </field>
-                <field id="source_dir" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Source XML Directory under pub/media</label>
-                    <comment>Example: run_as_root/feed</comment>
-                    <validate>required-entry validate-no-html-tags</validate>
-                </field>
-                <field id="source_pattern" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Source XML Filename Pattern</label>
-                    <comment>Example: *en_us*.xml. The newest matching file is used.</comment>
-                    <validate>required-entry validate-no-html-tags</validate>
-                </field>
-                <field id="output_dir" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="output_dir" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Output Directory under pub/media</label>
                     <comment>Example: feed</comment>
                     <validate>required-entry validate-no-html-tags</validate>
                 </field>
-                <field id="output_filename" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="output_filename" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Output CSV Filename</label>
                     <comment>Example: tiktok_feed.csv</comment>
                     <validate>required-entry validate-no-html-tags</validate>
                 </field>
-                <field id="base_media_url" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="base_media_url" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Custom Base Media URL</label>
                     <comment>Leave empty to use Magento Store Base Media URL. Use this only when CDN/custom media domain is required.</comment>
                     <validate>validate-url</validate>
@@ -50,7 +40,7 @@
                 <label>Product Mapping</label>
                 <field id="default_brand" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Default Brand</label>
-                    <comment>Used when the source feed and product attribute do not contain a brand.</comment>
+                    <comment>Used when the product brand attribute is empty.</comment>
                     <validate>required-entry validate-no-html-tags</validate>
                 </field>
                 <field id="brand_attribute" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -58,20 +48,20 @@
                     <comment>Default: brand</comment>
                     <validate>validate-code validate-no-html-tags</validate>
                 </field>
-                <field id="default_google_product_category" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="gtin_attribute" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>GTIN Attribute Code</label>
+                    <comment>Default: gtin. The generator also checks upc, ean, and barcode when GTIN is empty.</comment>
+                    <validate>validate-code validate-no-html-tags</validate>
+                </field>
+                <field id="default_google_product_category" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Default Google Product Category</label>
-                    <comment>Used when the source feed has no google_product_category.</comment>
+                    <comment>Used as the TikTok/Google category fallback.</comment>
                     <validate>required-entry validate-no-html-tags</validate>
                 </field>
-                <field id="max_additional_images" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="max_additional_images" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Maximum Additional Images</label>
                     <comment>Allowed range: 0-10.</comment>
                     <validate>validate-number validate-digits-range digits-range-0-10</validate>
-                </field>
-                <field id="normalize_admin_links" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Remove /admin/ from Product Links</label>
-                    <comment>Recommended: Yes. Prevents admin URLs from leaking into feeds.</comment>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
             </group>
         </section>
