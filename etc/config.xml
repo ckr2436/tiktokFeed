@@ -6,8 +6,6 @@
             <general>
                 <enabled>1</enabled>
                 <cron_schedule>0 */2 * * *</cron_schedule>
-                <source_dir>run_as_root/feed</source_dir>
-                <source_pattern>*en_us*.xml</source_pattern>
                 <output_dir>feed</output_dir>
                 <output_filename>tiktok_feed.csv</output_filename>
                 <base_media_url></base_media_url>
@@ -15,9 +13,9 @@
             <product>
                 <default_brand>MYUPONA</default_brand>
                 <brand_attribute>brand</brand_attribute>
+                <gtin_attribute>gtin</gtin_attribute>
                 <default_google_product_category>Health &amp; Beauty</default_google_product_category>
                 <max_additional_images>5</max_additional_images>
-                <normalize_admin_links>1</normalize_admin_links>
             </product>
         </pynarae_tiktokfeed>
     </default>
