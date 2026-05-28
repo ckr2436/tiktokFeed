@@ -5,12 +5,11 @@ namespace Pynarae\TiktokFeed\Controller\Adminhtml\Feed;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
-use Magento\Backend\Model\UrlInterface as BackendUrlInterface;
 use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Controller\ResultFactory;
+use Psr\Log\LoggerInterface;
 use Pynarae\TiktokFeed\Helper\Config;
 use Pynarae\TiktokFeed\Service\GenerateFeedService;
-use Psr\Log\LoggerInterface;
 
 class Generate extends Action
 {
@@ -19,20 +18,17 @@ class Generate extends Action
     private GenerateFeedService $feedService;
     private Config $config;
     private LoggerInterface $logger;
-    private BackendUrlInterface $backendUrl;
 
     public function __construct(
         Context $context,
         GenerateFeedService $feedService,
         Config $config,
-        LoggerInterface $logger,
-        BackendUrlInterface $backendUrl
+        LoggerInterface $logger
     ) {
         parent::__construct($context);
         $this->feedService = $feedService;
         $this->config = $config;
         $this->logger = $logger;
-        $this->backendUrl = $backendUrl;
     }
 
     public function execute(): Redirect
@@ -48,8 +44,9 @@ class Generate extends Action
         try {
             $result = $this->feedService->execute();
             $this->messageManager->addSuccessMessage(__(
-                'TikTok feed generated successfully. Processed %1 products. Output: %2',
+                'TikTok feed generated successfully from Magento catalog products. Processed %1 products. Skipped %2 products. Output: %3',
                 $result['processed'],
+                $result['skipped'],
                 $result['destination_file']
             ));
         } catch (\Throwable $exception) {
