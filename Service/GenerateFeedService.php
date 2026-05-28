@@ -95,7 +95,7 @@ class GenerateFeedService
         $skipped = 0;
 
         try {
-            fputcsv($handle, $this->getCsvHeaders());
+            $this->writeCsvRow($handle, $this->getCsvHeaders());
 
             foreach ($this->getProductCollection($storeId) as $product) {
                 if (!$product instanceof CatalogProduct) {
@@ -118,7 +118,7 @@ class GenerateFeedService
                     continue;
                 }
 
-                fputcsv($handle, $row);
+                $this->writeCsvRow($handle, $row);
                 $processed++;
             }
         } finally {
@@ -133,6 +133,21 @@ class GenerateFeedService
             'processed' => $processed,
             'skipped' => $skipped,
         ];
+    }
+
+    /**
+     * PHP 8.4 requires the fputcsv escape parameter to be provided explicitly.
+     * Empty escape keeps the output closer to standard CSV and avoids the deprecation notice.
+     *
+     * @param resource $handle
+     * @param string[] $row
+     */
+    private function writeCsvRow($handle, array $row): void
+    {
+        $result = fputcsv($handle, $row, ',', '"', '', "\n");
+        if ($result === false) {
+            throw new \RuntimeException('Unable to write CSV row.');
+        }
     }
 
     private function getProductCollection(int $storeId): ProductCollection
